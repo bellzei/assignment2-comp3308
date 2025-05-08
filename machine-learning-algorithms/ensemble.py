@@ -1,26 +1,21 @@
 from naivebayes import classify_nb
 from nn import classify_nn
 
-def classify_ens(training_filename, testing_filename, k1, k2):
+def classify_ens(training_file, testing_file, k1, k2):
+    # Get predictions from each model
+    pred_k1 = classify_nn(training_file, testing_file, k1)
+    pred_k2 = classify_nn(training_file, testing_file, k2)
+    pred_nb = classify_nb(training_file, testing_file)
 
-    bayes = classify_nb(training_filename, testing_filename)
-    nn1 = classify_nn(training_filename, testing_filename, k1)
-    nn2 = classify_nn(training_filename, testing_filename, k2)
+    # Combine predictions with majority voting
+    final_predictions = []
+    for i in range(len(pred_k1)):
+        votes = [pred_k1[i], pred_k2[i], pred_nb[i]]
+        if votes.count("yes") > votes.count("no"):
+            final_predictions.append("yes")
+        elif votes.count("no") > votes.count("yes"):
+            final_predictions.append("no")
+        else:
+            final_predictions.append("yes")  # Tie-breaker
 
-    ens_decisions = []
-    for x in range(len(bayes)):
-        yes_count = 0
-        if bayes[x] == 'yes':
-            yes_count += 1
-        if nn1[x] == 'yes':
-            yes_count += 1
-        if nn2[x] == 'yes':
-            yes_count += 1
-        
-        if yes_count >= 2:
-            decision = 'yes'
-        else: 
-            decision = 'no'
-        
-        ens_decisions.append(decision)
-    return [ens_decisions]
+    return final_predictions
