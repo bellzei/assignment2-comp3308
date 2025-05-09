@@ -9,12 +9,23 @@ def load_data(filename, has_class=True):
             if not line:
                 continue
             parts = line.split(',')
+            
+            # splitting and formatting the csv file for taining and testing datasets
             if has_class:
-                attributes = list(map(float, parts[:-1]))
+                attribute_strings = parts[:-1]
+                attribute_floats = []
+                for item in attribute_strings:
+                    number = float(item)
+                    attribute_floats.append(number)
+                attributes = attribute_floats
                 label = parts[-1]
                 data.append((attributes, label))
             else:
-                attributes = list(map(float, parts))
+                attribute_floats = []
+                for item in parts:
+                    number = float(item)
+                    attribute_floats.append(number) 
+                attributes = attribute_floats
                 data.append(attributes)
     return data
 
@@ -51,8 +62,14 @@ def classify_nb(training_file, testing_file):
     # Compute mean and stddev for each attribute for each class
     summaries = {}
     for class_value in ['yes', 'no']:
+        # Initialize an empty list to hold (mean, stddev) tuples for this class
         summaries[class_value] = []
-        class_data = list(zip(*separated[class_value]))  # transpose
+
+        # Get all the rows of data that belong to this class
+        class_rows = separated[class_value]
+
+        # Transpose the list of rows so we group all values for each attribute
+        class_data = list(zip(*class_rows))
         for attribute_values in class_data:
             mu = mean(attribute_values)
             sigma = stddev(attribute_values, mu)

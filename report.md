@@ -35,7 +35,6 @@ Recall, Precision, F1 – can probably compare these too for fun or if the resul
 
 ### Discussion
 •	Compare the performance of all classifiers in terms of accuracy (and other performance measures if you have other measures)
-•	
 •	Compare your kNN and NB classifiers with Weka's 
 •	Compare your ensemble MyEns with the individual classifiers it combines (My1NN, My7NN, MyNB)
 •	Discuss the changes in performance on the two datasets - did the classifiers perform differently and if so, did these differences make intuitive sense to you?
@@ -59,4 +58,12 @@ Summarise your main findings and suggest future work.
 Reflection
 
 Write one or two paragraphs describing the most important thing that you have learned throughout this assignment. Each group member should write their own reflection.
+
+
+Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are effective baseline classifiers for real-world binary classification tasks. Their performance can vary depending on data structure. An ensemble of both classifiers consistently improved accuracy by leveraging the strengths of each. Future work could explore additional features, time-series analysis for occupancy, and other ensemble methods such as bagging or boosting.
+
+### Reflection
+
+#### Member 1:
+Through this assignment, I learned how essential good data preprocessing (e.g., normalization and stratification) is to model performance. Implementing classifiers from scratch taught me the internal mechanics of algorithms we often use as black boxes, and I now appreciate the challenges of even simple models like kNN and Naive Bayes, especially around things like numeric stability and tie-breaking in classification.
 
