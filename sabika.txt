@@ -19,3 +19,10 @@ Comparison:
 - The diabetes dataset reflects medical diagnostic data, whereas the occupancy dataset captures temporal environmental conditions.
 
 - The occupancy dataset has fewer features but more instances, potentially impacting classifier behaviour.
+
+
+
+
+
+Confusion Matrix
+Recall, Precision, F1 – can probably compare these too for fun or if the results are close. Or at least specify if they’re necessary or not.
