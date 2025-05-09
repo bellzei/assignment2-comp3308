@@ -58,6 +58,16 @@ The ensemble approach consistently improved classification stability and accurac
 
 These performance differences across datasets highlight the importance of choosing the right algorithm for the data structure at hand. The occupancy dataset’s sensor readings had tight correlations and clusters, making it favorable for kNN. Meanwhile, the more overlapping and probabilistically complex Pima dataset was better handled with probabilistic models like Naive Bayes and ensemble methods.
 
+### Statistical Significance:
+
+To assess the reliability of these differences, paired corrected t-tests were performed in Weka Experimenter at the 0.05 significance level.
+
+On the Pima Diabetes dataset, 1NN performed significantly worse than Naive Bayes. While 7NN achieved higher accuracy than Naive Bayes, this difference was not statistically significant.
+
+On the Occupancy dataset, both 1NN and 7NN performed significantly better than Naive Bayes. The 1NN classifier, in particular, achieved a mean accuracy of 99.51%, significantly outperforming Naive Bayes (96.78%).
+
+These results validate that the differences observed were not merely due to chance, particularly for the occupancy dataset where the structure of the data clearly favors instance-based methods.
+
 
 ## Conclusion
 Summarise your main findings and suggest future work.
