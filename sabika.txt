@@ -1,0 +1,21 @@
+1. Introduction
+
+This study aims to implement and evaluate several machine learning classifiers, including Naive Bayes, k-Nearest Neighbours (kNN), and an ensemble of these, on two real-world datasets: one related to diabetes prediction and the other to room occupancy estimation. The classifiers were implemented from scratch and assessed using 10-fold stratified cross-validation. This exercise helps us understand both the performance and the practicality of these algorithms when applied to different types of problems.
+
+This study is important because it not only deepens our understanding of how simple classifiers like Naive Bayes and kNN function internally, but also provides a hands-on approach to handling, preprocessing, and evaluating real-world data. It bridges the gap between theoretical knowledge and practical implementation.
+
+2. Data
+
+We evaluated our classifiers on two datasets:
+
+Pima Indians Diabetes Dataset: This dataset contains 768 records with 8 numeric attributes and a binary class indicating whether an individual has diabetes ("yes" or "no"). All participants are female and of Pima Indian heritage, aged 21 or older. Attributes include metrics such as glucose concentration, BMI, and blood pressure.
+
+Room Occupancy Dataset: This dataset contains 2025 records with 4 numeric sensor attributes (temperature, light, sound, CO2) and a binary class indicating room occupancy ("yes" or "no"). The readings were collected using environmental sensors.
+
+Comparison:
+
+- Both datasets have numeric attributes and a binary class.
+
+- The diabetes dataset reflects medical diagnostic data, whereas the occupancy dataset captures temporal environmental conditions.
+
+- The occupancy dataset has fewer features but more instances, potentially impacting classifier behaviour.
