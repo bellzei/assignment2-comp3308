@@ -27,20 +27,14 @@ Room Occupancy Dataset: This dataset contains 2025 records with 4 numeric sensor
 ## Results and Discussion
 
 ### Results
-The accuracy results should be presented in the following table where My1NN, My7NN and MyNB are your implementations of the 1NN, 7NN and NB algorithms, and MyEns is your ensemble algorithm combining 1NN, 7NN and NB, evaluated using your stratified 10-fold cross validation.
+
 
 | Dataset   | ZeroR   | 1R       | 1NN      | 7NN      | NB       | DT       | MLP      | SVM      | RF       | **My1NN** | **My7NN**  | **MyNB** | **MyEns** |
 |-----------|---------|----------|----------|----------|----------|----------|----------|----------|----------|-----------|-----------|----------|-----------|
 | Diabetes  | 65.189% | 70.7953% | 69.7523% | 75.7497% | 74.7066% | 74.5763% | 75.0978% | 76.4016% | 77.4446% | 69.54%    |         75.53%     | 75.26%   | 76.31%    |
 | Occupancy | 81.2747% | 98.4684% | 99.5059% | 99.2589% | 96.7885% | 99.5059% | 99.3083% | 98.419% | 99.7036% | 99.51% | 99.26% | 96.79% | 99.16% |
 
-
-
-Confusion Matrix
-Recall, Precision, F1 – can probably compare these too for fun or if the results are close. Or at least specify if they’re necessary or not.
-
 ### Discussion
-
 The results illustrate the varying performance of different classifiers across the two datasets. On the Pima Indians Diabetes dataset, our 7NN classifier (My7NN) achieved a notable accuracy of 75.53%, outperforming both our 1NN (My1NN) and Naive Bayes (MyNB) implementations. The ensemble model (MyEns) delivered the highest accuracy at 76.31%, confirming the benefit of combining multiple models through majority voting.
 
 In contrast, the Room Occupancy dataset yielded exceptionally high accuracies for all classifiers, with both our 1NN and 7NN implementations exceeding 99%, and MyEns achieving 99.16%. This indicates that the occupancy data had clearer patterns and more separable clusters, making it well-suited for instance-based learners like kNN.
@@ -62,7 +56,6 @@ On the Occupancy dataset, both 1NN and 7NN performed significantly better than N
 These results validate that the differences observed were not merely due to chance, particularly for the occupancy dataset where the structure of the data clearly favors instance-based methods.
 
 ## Conclusion
-
 Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are effective baseline classifiers for real-world binary classification tasks. Their performance can vary depending on data structure. An ensemble of both classifiers consistently improved accuracy by leveraging the strengths of each. Future work could explore additional features, time-series analysis for occupancy, and other ensemble methods such as bagging or boosting.
 
 ## Reflection
