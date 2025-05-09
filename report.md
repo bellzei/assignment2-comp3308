@@ -67,7 +67,6 @@ Reflection
 
 Write one or two paragraphs describing the most important thing that you have learned throughout this assignment. Each group member should write their own reflection.
 
-
 Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are effective baseline classifiers for real-world binary classification tasks. Their performance can vary depending on data structure. An ensemble of both classifiers consistently improved accuracy by leveraging the strengths of each. Future work could explore additional features, time-series analysis for occupancy, and other ensemble methods such as bagging or boosting.
 
 ## Reflection
