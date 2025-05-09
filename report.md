@@ -17,9 +17,17 @@ We are using two datasets: Pima Indian Diabetes Dataset (PID) and Room Occupancy
 PID has 8 numeric attributes and 2 classes (yes or no) spanning 768 instances. Each instance describes characteristics and test measurements of a patient of  Pima Indian heritage, with the yes/no class referring to whether or not they have diabetes. 
 
 RO has 4 numeric attributes and 2 classes (yes or no) spanning 2,025 instances. Each instance describes the sensor readings  (light, temperature, sound and CO2) taken in a room, with the yes/no class referring to whether the room was occupied at the time or not. 
-Results and Discussion
-Results
+
+### Results and Discussion
+
+### Results
 The accuracy results should be presented in the following table where My1NN, My7NN and MyNB are your implementations of the 1NN, 7NN and NB algorithms, and MyEns is your ensemble algorithm combining 1NN, 7NN and NB, evaluated using your stratified 10-fold cross validation.
+
+| Dataset   | ZeroR | 1R  | 1NN | 7NN | NB  | DT  | MLP | SVM | RF  | **My1NN** | **My7NN** | **MyNB** | **MyEns** |
+|-----------|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----------|-----------|----------|-----------|
+| Diabetes  |       |     |     |     |     |     |     |     |     |  0.6954      |   0.7553        |    0.7526      |    0.7631       |
+| Occupancy |       |     |     |     |     |     |     |     |     |    0.9951       |     0.9926      |     0.9679     |     0.9916      |
+
  
 
 Confusion Matrix
