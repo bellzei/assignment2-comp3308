@@ -40,13 +40,6 @@ Confusion Matrix
 Recall, Precision, F1 – can probably compare these too for fun or if the results are close. Or at least specify if they’re necessary or not.
 
 ### Discussion
-•	Compare the performance of all classifiers in terms of accuracy (and other performance measures if you have other measures)
-•	Compare your kNN and NB classifiers with Weka's 
-•	Compare your ensemble MyEns with the individual classifiers it combines (My1NN, My7NN, MyNB)
-•	Discuss the changes in performance on the two datasets - did the classifiers perform differently and if so, did these differences make intuitive sense to you?
-Include anything else that you consider important.
-
-
 
 The results illustrate the varying performance of different classifiers across the two datasets. On the Pima Indians Diabetes dataset, our 7NN classifier (My7NN) achieved a notable accuracy of 75.53%, outperforming both our 1NN (My1NN) and Naive Bayes (MyNB) implementations. The ensemble model (MyEns) delivered the highest accuracy at 76.31%, confirming the benefit of combining multiple models through majority voting.
 
@@ -68,12 +61,7 @@ On the Occupancy dataset, both 1NN and 7NN performed significantly better than N
 
 These results validate that the differences observed were not merely due to chance, particularly for the occupancy dataset where the structure of the data clearly favors instance-based methods.
 
-
 ## Conclusion
-Summarise your main findings and suggest future work.
-Reflection
-
-Write one or two paragraphs describing the most important thing that you have learned throughout this assignment. Each group member should write their own reflection.
 
 Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are effective baseline classifiers for real-world binary classification tasks. Their performance can vary depending on data structure. An ensemble of both classifiers consistently improved accuracy by leveraging the strengths of each. Future work could explore additional features, time-series analysis for occupancy, and other ensemble methods such as bagging or boosting.
 
@@ -83,4 +71,4 @@ Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are e
 Through this assignment, I learned how essential good data preprocessing (e.g., normalization and stratification) is to model performance. Implementing classifiers from scratch taught me the internal mechanics of algorithms we often use as black boxes, and I now appreciate the challenges of even simple models like kNN and Naive Bayes, especially around things like numeric stability and tie-breaking in classification. I have also realized the importance of role that statistics play in not refining and understanding the important information realyed by raw data.
 
 #### Member 2:
-I think...
+This assignment greatly helped with my understanding of the kNN and Naive Bayes algorithms, having to code them from scratch. The difference between the accuracy results we got with the diabetes dataset vs the occupancy dataset have made me realise the difficulties of training classifiers on noisy data. However, the accuracies were very decent all in all, making me appreciate the importance and usefulness of machine learning applications. Lastly, having to create folds and perform 10-fold stratified cross-validation has really improved my understanding of how these classifiers are trained. 
