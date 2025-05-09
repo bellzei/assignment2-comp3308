@@ -73,5 +73,5 @@ Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are e
 ## Reflection
 
 #### Member 1:
-Through this assignment, I learned how essential good data preprocessing (e.g., normalization and stratification) is to model performance. Implementing classifiers from scratch taught me the internal mechanics of algorithms we often use as black boxes, and I now appreciate the challenges of even simple models like kNN and Naive Bayes, especially around things like numeric stability and tie-breaking in classification.
+Through this assignment, I learned how essential good data preprocessing (e.g., normalization and stratification) is to model performance. Implementing classifiers from scratch taught me the internal mechanics of algorithms we often use as black boxes, and I now appreciate the challenges of even simple models like kNN and Naive Bayes, especially around things like numeric stability and tie-breaking in classification. I have also realized the importance of role that statistics play in not refining and understanding the important information realyed by raw data.
 
