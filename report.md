@@ -1,6 +1,6 @@
 ### Report 
 
-### Introduction
+## Introduction
 This study evaluates and compares the performance of different machine learning classifiers using two datasets. The classifiers were trained to predict (i) the onset of diabetes from basic clinical measurements and (ii) room occupancy from environmental sensor readings. In this study we implemented 3 of our own classifiers: k-nearest neighbours with k = 1 and 7, and Naïve Bayes, as well as an ensemble classifier combining the three. We then contrast these classifiers with ZeroR, OneR, 1-NN, 7-NN, Naive Bayes, Decision Tree, Support Vector Machines, Multi-Layer Perceptrons, and Random Forest computed using Weka software.
 
 We will evaluate the classifiers by measuring accuracy (proportion of correctly classified examples) achieved by 10-fold stratified cross-validation. 
@@ -9,16 +9,24 @@ We will compare the classifiers by comparing the accuracies achieved. We will ru
 
 Accurate diagnosis of diabetes is vital for quick intervention, while automatic detection of room occupancy plays an important role in energy-efficient building control. Demonstrating that lightweight learners can achieve a similar accuracy to more sophisticated models would support their use in resource-constrained settings. 
 
-### Data
+## Data
 We are using two datasets: Pima Indian Diabetes Dataset (PID) and Room Occupancy Dataset (RO). 
 
-PID has 8 numeric attributes and 2 classes (yes or no) spanning 768 instances. Each instance describes characteristics and test measurements of a patient of  Pima Indian heritage, with the yes/no class referring to whether or not they have diabetes. 
+We evaluated our classifiers on two datasets:
 
-RO has 4 numeric attributes and 2 classes (yes or no) spanning 2,025 instances. Each instance describes the sensor readings  (light, temperature, sound and CO2) taken in a room, with the yes/no class referring to whether the room was occupied at the time or not. 
+Pima Indians Diabetes Dataset: This dataset contains 768 records with 8 numeric attributes and a binary class indicating whether an individual has diabetes ("yes" or "no"). All participants are female and of Pima Indian heritage, aged 21 or older. Attributes include metrics such as glucose concentration, BMI, and blood pressure.
 
-Similarities between the 
+Room Occupancy Dataset: This dataset contains 2025 records with 4 numeric sensor attributes (temperature, light, sound, CO2) and a binary class indicating room occupancy ("yes" or "no"). The readings were collected using environmental sensors.
 
-### Results and Discussion
+#### Comparison:
+
+- Both datasets have numeric attributes and a binary class.
+
+- The diabetes dataset reflects medical diagnostic data, whereas the occupancy dataset captures temporal environmental conditions.
+
+- The occupancy dataset has fewer features but more instances, potentially impacting classifier behaviour.
+
+## Results and Discussion
 
 ### Results
 The accuracy results should be presented in the following table where My1NN, My7NN and MyNB are your implementations of the 1NN, 7NN and NB algorithms, and MyEns is your ensemble algorithm combining 1NN, 7NN and NB, evaluated using your stratified 10-fold cross validation.
@@ -53,7 +61,7 @@ The ensemble approach consistently improved classification stability and accurac
 These performance differences across datasets highlight the importance of choosing the right algorithm for the data structure at hand. The occupancy dataset’s sensor readings had tight correlations and clusters, making it favorable for kNN. Meanwhile, the more overlapping and probabilistically complex Pima dataset was better handled with probabilistic models like Naive Bayes and ensemble methods.
 
 
-### Conclusion
+## Conclusion
 Summarise your main findings and suggest future work.
 Reflection
 
@@ -62,7 +70,7 @@ Write one or two paragraphs describing the most important thing that you have le
 
 Our experiments demonstrate that both Naive Bayes and k-Nearest Neighbours are effective baseline classifiers for real-world binary classification tasks. Their performance can vary depending on data structure. An ensemble of both classifiers consistently improved accuracy by leveraging the strengths of each. Future work could explore additional features, time-series analysis for occupancy, and other ensemble methods such as bagging or boosting.
 
-### Reflection
+## Reflection
 
 #### Member 1:
 Through this assignment, I learned how essential good data preprocessing (e.g., normalization and stratification) is to model performance. Implementing classifiers from scratch taught me the internal mechanics of algorithms we often use as black boxes, and I now appreciate the challenges of even simple models like kNN and Naive Bayes, especially around things like numeric stability and tie-breaking in classification.
