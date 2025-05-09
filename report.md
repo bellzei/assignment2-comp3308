@@ -12,8 +12,6 @@ Accurate diagnosis of diabetes is vital for quick intervention, while automatic 
 ## Data
 We are using two datasets: Pima Indian Diabetes Dataset (PID) and Room Occupancy Dataset (RO). 
 
-We evaluated our classifiers on two datasets:
-
 Pima Indians Diabetes Dataset: This dataset contains 768 records with 8 numeric attributes and a binary class indicating whether an individual has diabetes ("yes" or "no"). All participants are female and of Pima Indian heritage, aged 21 or older. Attributes include metrics such as glucose concentration, BMI, and blood pressure.
 
 Room Occupancy Dataset: This dataset contains 2025 records with 4 numeric sensor attributes (temperature, light, sound, CO2) and a binary class indicating room occupancy ("yes" or "no"). The readings were collected using environmental sensors.
