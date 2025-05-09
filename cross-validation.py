@@ -72,10 +72,10 @@ acc_nb_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_nb)
 print(f"Naive Bayes Accuracy (Occupancy): {acc_nb_occ:.4f}")
 
 acc_knn1_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_nn, 1)
-print(f"KNN (k=1) Accuracy (Occupany): {acc_knn1:.4f}")
+print(f"KNN (k=1) Accuracy (Occupany): {acc_knn1_occ:.4f}")
 
 acc_knn7_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_nn, 7)
-print(f"KNN (k=7) Accuracy (Occupany): {acc_knn7:.4f}")
+print(f"KNN (k=7) Accuracy (Occupany): {acc_knn7_occ:.4f}")
 
 acc_ensemble_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_ens, 1, 7)
-print(f"Ensemble Accuracy (Occupancy): {acc_ensemble:.4f}")
+print(f"Ensemble Accuracy (Occupancy): {acc_ensemble_occ:.4f}")
