@@ -1,32 +1,32 @@
 ### Report 
 
 ### Introduction
-This section should briefly state the aim of your study and include a paragraph about why this study is important according to you.
-
-This study evaluates and compares the performance of different machine learning classifiers using two datasets. The classifiers we will compare are: Our own implementations of k-nearest neighbours with varying k and Naïve Bayes, as well as ZeroR, OneR, decision trees, random forest, support vector machines, neural networks, K-NN, and Naïve Bayes, all using Weka.
+This study evaluates and compares the performance of different machine learning classifiers using two datasets. The classifiers were trained to predict (i) the onset of diabetes from basic clinical measurements and (ii) room occupancy from environmental sensor readings. In this study we implemented 3 of our own classifiers: k-nearest neighbours with k = 1 and 7, and Naïve Bayes, as well as an ensemble classifier combining the three. We then contrast these classifiers with ZeroR, OneR, 1-NN, 7-NN, Naive Bayes, Decision Tree, Support Vector Machines, Multi-Layer Perceptrons, and Random Forest computed using Weka software.
 
 We will evaluate the classifiers by measuring accuracy (proportion of correctly classified examples) achieved by 10-fold stratified cross-validation. 
 
-
 We will compare the classifiers by comparing the accuracies achieved. We will run a paired t-test to determine if one classifier is significantly better than another.  
 
+Accurate diagnosis of diabetes is vital for quick intervention, while automatic detection of room occupancy plays an important role in energy-efficient building control. Demonstrating that lightweight learners can achieve a similar accuracy to more sophisticated models would support their use in resource-constrained settings. 
+
 ### Data
-This section should describe the datasets, mentioning the number of attributes and classes. You should also briefly summarise the similarities and differences between the datasets.
 We are using two datasets: Pima Indian Diabetes Dataset (PID) and Room Occupancy Dataset (RO). 
 
 PID has 8 numeric attributes and 2 classes (yes or no) spanning 768 instances. Each instance describes characteristics and test measurements of a patient of  Pima Indian heritage, with the yes/no class referring to whether or not they have diabetes. 
 
 RO has 4 numeric attributes and 2 classes (yes or no) spanning 2,025 instances. Each instance describes the sensor readings  (light, temperature, sound and CO2) taken in a room, with the yes/no class referring to whether the room was occupied at the time or not. 
 
+Similarities between the 
+
 ### Results and Discussion
 
 ### Results
 The accuracy results should be presented in the following table where My1NN, My7NN and MyNB are your implementations of the 1NN, 7NN and NB algorithms, and MyEns is your ensemble algorithm combining 1NN, 7NN and NB, evaluated using your stratified 10-fold cross validation.
 
-| Dataset   | ZeroR | 1R  | 1NN | 7NN | NB  | DT  | MLP | SVM | RF  | **My1NN** | **My7NN** | **MyNB** | **MyEns** |
-|-----------|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----------|-----------|----------|-----------|
-| Diabetes  |  65.189%     |  70.7953%   |  69.7523%   |  75.7497%   |  74.7066%   |     |     |     |     |  69.54%      |   75.53%        |    75.26%      |    76.31%       |
-| Occupancy |       |     |     |     |     |     |     |     |     |    99.51%       |     0.9926      |     96.79%     |     99.16%      |
+| Dataset   | ZeroR   | 1R       | 1NN      | 7NN      | NB       | DT       | MLP      | SVM      | RF       | **My1NN** | **My7NN**  | **MyNB** | **MyEns** |
+|-----------|---------|----------|----------|----------|----------|----------|----------|----------|----------|-----------|-----------|----------|-----------|
+| Diabetes  | 65.189% | 70.7953% | 69.7523% | 75.7497% | 74.7066% | 74.5763% | 75.0978% | 76.4016% | 77.4446% | 69.54%    |         75.53%     | 75.26%   | 76.31%    |
+| Occupancy | 81.2747% | 98.4684% | 99.5059% | 99.2589% | 96.7885% | 99.5059% | 99.3083% | 98.419% | 99.7036% | 99.51% | 99.26% | 96.79% | 99.16% |
 
  
 
