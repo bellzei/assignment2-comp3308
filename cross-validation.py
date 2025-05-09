@@ -10,68 +10,66 @@ from nn import classify_nn
 from ensemble import classify_ens
 
 
-def stratified_k_folds(data, k=10):
-    """Create k stratified folds from the data."""
-    folds = [[] for _ in range(k)]
-    class_buckets = defaultdict(list)
-
-    # Separate examples by class
-    for row in data:
-        label = row.strip().split(',')[-1]
-        class_buckets[label].append(row)
-
-    # Shuffle and distribute into folds
-    for label, rows in class_buckets.items():
-        random.shuffle(rows)
-        for i, row in enumerate(rows):
-            folds[i % k].append(row)
+def parse_folds_from_file(filename):
+    """Parses a fold file in the format described and returns a list of folds."""
+    folds = []
+    with open(filename, 'r') as file:
+        lines = [line.strip() for line in file if line.strip() != '']
+    
+    current_fold = []
+    for line in lines:
+        if line.startswith("fold"):
+            if current_fold:
+                folds.append(current_fold)
+                current_fold = []
+        else:
+            current_fold.append(line)
+    if current_fold:
+        folds.append(current_fold)
 
     return folds
 
-def evaluate_classifier(classify_fn, folds, *args):
-    """Perform k-fold cross-validation using a given classifier function."""
+def cross_validate_from_folds_file(folds_file, classify_fn, *args):
+    """Evaluates a classifier using cross-validation based on a fold file."""
+    folds = parse_folds_from_file(folds_file)
     accuracies = []
 
     for i in range(len(folds)):
-        test_fold = folds[i]
-        train_folds = [row for j, fold in enumerate(folds) if j != i for row in fold]
+        test_set = folds[i]
+        train_set = [row for j, fold in enumerate(folds) if j != i for row in fold]
 
-        # Write to temporary files
-        with open('train_temp.csv', 'w') as f:
-            f.write('\n'.join(train_folds))
-        with open('test_temp.csv', 'w') as f:
-            test_lines = [','.join(row.strip().split(',')[:-1]) for row in test_fold]
-            f.write('\n'.join(test_lines))
+        # Prepare training and testing files
+        with open("train_temp.csv", "w") as f:
+            f.write('\n'.join(train_set))
+        with open("test_temp.csv", "w") as f:
+            f.write('\n'.join([','.join(row.split(',')[:-1]) for row in test_set]))
 
-        # True labels
-        true_labels = [row.strip().split(',')[-1] for row in test_fold]
+        true_labels = [row.split(',')[-1] for row in test_set]
+        predictions = classify_fn("train_temp.csv", "test_temp.csv", *args)
 
-        # Run classifier
-        predictions = classify_fn('train_temp.csv', 'test_temp.csv', *args)
-
-        # Evaluate
         correct = sum(1 for true, pred in zip(true_labels, predictions) if true == pred)
-        accuracy = correct / len(true_labels)
+        accuracy = correct / len(test_set)
         accuracies.append(accuracy)
 
     avg_accuracy = sum(accuracies) / len(accuracies)
     return avg_accuracy
 
-# Load the full dataset (e.g., pima.csv or occupancy.csv)
-with open("pima.csv", "r") as file:
-    full_data = file.readlines()
+# Evaluate on Pima dataset
+acc_nb = cross_validate_from_folds_file("pima-folds.csv", classify_nb)
+print(f"Naive Bayes Accuracy (Pima): {acc_nb:.4f}")
 
-# Create 10 stratified folds
-folds = stratified_k_folds(full_data, k=10)
+acc_knn3 = cross_validate_from_folds_file("pima-folds.csv", classify_nn, 3)
+print(f"KNN (k=3) Accuracy (Pima): {acc_knn3:.4f}")
 
-# Evaluate Naive Bayes
-acc_nb = evaluate_classifier(classify_nb, folds)
-print(f"Naive Bayes Accuracy: {acc_nb:.4f}")
+acc_ensemble = cross_validate_from_folds_file("pima-folds.csv", classify_ens, 3, 5)
+print(f"Ensemble Accuracy (Pima): {acc_ensemble:.4f}")
 
-# Evaluate kNN (k=3)
-acc_knn3 = evaluate_classifier(classify_nn, folds, 3)
-print(f"KNN (k=3) Accuracy: {acc_knn3:.4f}")
+# Evaluate on Occupancy dataset
+acc_nb_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_nb)
+print(f"Naive Bayes Accuracy (Occupancy): {acc_nb_occ:.4f}")
 
-# Evaluate Ensemble (k1=3, k2=5)
-acc_ensemble = evaluate_classifier(classify_ens, folds, 3, 5)
-print(f"Ensemble Accuracy: {acc_ensemble:.4f}")
+acc_knn3_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_nn, 3)
+print(f"KNN (k=3) Accuracy (Occupany): {acc_knn3:.4f}")
+
+acc_ensemble_occ = cross_validate_from_folds_file("occupancy-folds.csv", classify_ens, 3, 5)
+print(f"Ensemble Accuracy (Occupancy): {acc_ensemble:.4f}")
