@@ -28,7 +28,19 @@ The accuracy results should be presented in the following table where My1NN, My7
 | Diabetes  | 65.189% | 70.7953% | 69.7523% | 75.7497% | 74.7066% | 74.5763% | 75.0978% | 76.4016% | 77.4446% | 69.54%    |         75.53%     | 75.26%   | 76.31%    |
 | Occupancy | 81.2747% | 98.4684% | 99.5059% | 99.2589% | 96.7885% | 99.5059% | 99.3083% | 98.419% | 99.7036% | 99.51% | 99.26% | 96.79% | 99.16% |
 
- 
+ Discussion:
+
+The results illustrate the varying performance of different classifiers across the two datasets. On the Pima Indians Diabetes dataset, our 7NN classifier (My7NN) achieved a notable accuracy of 75.53%, outperforming both our 1NN (My1NN) and Naive Bayes (MyNB) implementations. The ensemble model (MyEns) delivered the highest accuracy at 76.31%, confirming the benefit of combining multiple models through majority voting.
+
+In contrast, the Room Occupancy dataset yielded exceptionally high accuracies for all classifiers, with both our 1NN and 7NN implementations exceeding 99%, and MyEns achieving 99.16%. This indicates that the occupancy data had clearer patterns and more separable clusters, making it well-suited for instance-based learners like kNN.
+
+When comparing with Weka’s implementations, we observe that our models achieved similar performance. For example, Weka’s kNN (IBk) with k=1 achieved 99.5059% on the occupancy dataset, closely matching our My1NN (99.51%). Our Naive Bayes implementation also performed comparably to Weka’s, especially on the diabetes dataset.
+
+The ensemble approach consistently improved classification stability and accuracy. It smoothed out weaknesses of individual classifiers, such as MyNB’s relatively lower performance on the occupancy dataset, by leveraging the strengths of all three.
+
+These performance differences across datasets highlight the importance of choosing the right algorithm for the data structure at hand. The occupancy dataset’s sensor readings had tight correlations and clusters, making it favorable for kNN. Meanwhile, the more overlapping and probabilistically complex Pima dataset was better handled with probabilistic models like Naive Bayes and ensemble methods.
+
+
 
 Confusion Matrix
 Recall, Precision, F1 – can probably compare these too for fun or if the results are close. Or at least specify if they’re necessary or not.
